@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail | New City Point</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/images/WhatsApp Image 2026-04-02 at 8.03.30 AM 1.png">
+
+    <style>
+        body {
+            background-color: #fcfbf7;
+        }
+
+        .breadcrumb-section {
+            padding: 30px 0 20px;
+        }
+
+        .back-to-shop {
+            color: var(--text-dark);
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 400;
+        }
+
+        .product-detail-card {
+            background: white;
+            padding: 30px;
+            border-radius: 4px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.02);
+            margin-bottom: 40px;
+        }
+
+        /* Image Gallery */
+        .main-img-wrapper {
+            height: 500px;
+            overflow: hidden;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .main-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumb-grid {
+            display: flex;
+            gap: 15px;
+        }
+
+        .thumb-img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid #eee;
+            transition: var(--transition-smooth);
+        }
+
+        .thumb-img.active {
+            border-color: var(--secondary-color);
+        }
+
+        /* Product Info */
+        .pd-title {
+            font-family: var(--font-heading);
+            font-size: 38px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .pd-price {
+            font-size: 26px;
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+
+        .pd-desc {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .pd-meta {
+            margin-bottom: 35px;
+        }
+
+        .pd-meta-item {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .pd-meta-item strong {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .option-label {
+            font-size: 16px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .pd-size-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .size-btn {
+            width: 45px;
+            height: 45px;
+            border: 1px solid #d4d4d4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--primary-color);
+            transition: var(--transition-smooth);
+            background: white;
+            border-radius: 2px;
+        }
+
+        .size-btn.active {
+            border-color: var(--primary-color);
+            background: #f8f6f2;
+            font-weight: 600;
+        }
+
+        .pd-qty-group {
+            display: flex;
+            align-items: center;
+            border: 1px solid #d4d4d4;
+            width: fit-content;
+            margin-bottom: 40px;
+            border-radius: 2px;
+        }
+
+        .qty-btn {
+            width: 40px;
+            height: 45px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qty-val {
+            width: 50px;
+            text-align: center;
+            font-size: 16px;
+            color: var(--primary-color);
+            border-left: 1px solid #d4d4d4;
+            border-right: 1px solid #d4d4d4;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pd-actions {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn-order-now {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            flex: 1.5;
+            height: 55px;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-add-cart {
+            background: var(--primary-color);
+            color: white;
+            flex: 1;
+            height: 55px;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition-smooth);
+        }
+
+        .pd-guarantee {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        .pd-guarantee i {
+            color: var(--secondary-color);
+            font-size: 20px;
+        }
+
+        /* Related Products Adjustments */
+        .related-section {
+            padding-bottom: 100px;
+        }
+
+        .related-title {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+        }
+
+        .shop-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition-smooth);
+            border: none;
+        }
+
+        .shop-card-info {
+            padding: 20px;
+        }
+
+        .shop-card-title {
+            font-family: var(--font-heading);
+            font-size: 26px;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        .shop-card-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            height: 40px;
+            overflow: hidden;
+        }
+
+        .shop-card-price {
+            font-size: 26px;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .shop-card-category {
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+        }
+
+        @media (max-width: 991px) {
+            .pd-title {
+                font-size: 36px;
+            }
+
+            .main-img-wrapper {
+                height: 450px;
+            }
+
+            .pd-actions {
+                flex-direction: column;
+            }
+        }
+
+        /* Whatsapp Icon */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white !important;
+            padding: 12px 25px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="announcement-bar">
+        <div class="container announcement-content">
+            <span>?</span>
+            <span>NEW COLLECTION 2026</span>
+            <span>?</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-3" href="index.html">
+                <img src="assets/images/WhatsApp Image 2026-04-02 at 8.03.30 AM 1.png" alt="Logo">
+                <div class="d-none d-sm-block">
+                    <div
+                        style="font-family: var(--font-heading); font-size: 24px; line-height: 1; letter-spacing: 0.05em; color: var(--primary-color); font-weight: 500;">
+                        New City Point</div>
+                    <div
+                        style="font-family: var(--font-body); font-size: 12px; opacity: 1; letter-spacing: 0.1em; font-weight: 400; color: var(--secondary-color); margin-top: 4px;">
+                        GENUINE • PREMIUM • EXCLUSIVE</div>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-2 text-primary"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="shop.html">SHOP</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">ABOUT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <div class="d-flex align-items-center gap-3 nav-icons-group">
+                <a href="javascript:void(0)" id="search-trigger" class="text-primary transition-smooth">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="m21 21-4.3-4.3" />
+                    </svg>
+                </a>
+                <a href="cart.html" class="text-primary transition-smooth position-relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                        <path d="M3 6h18" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-gold"
+                        style="font-size: 10px; padding: 2px 5px; min-width: 18px;">0</span>
+                </a>
+                <a href="javascript:handleProfileClick()" class="text-primary transition-smooth">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container breadcrumb-section">
+        <a href="shop.html" class="back-to-shop"><i class="bi bi-arrow-left"></i> Back to Shop</a>
+    </div>
+
+    <div class="container">
+        <div class="product-detail-card">
+            <div class="row g-5">
+                <!-- Images -->
+                <div class="col-lg-6">
+                    <div class="main-img-wrapper">
+                        <img src="" id="main-image" class="main-img" alt="Product Image">
+                    </div>
+                    <div class="thumb-grid" id="thumb-grid">
+                        <!-- Thumbs dynamic -->
+                    </div>
+                </div>
+
+                <!-- Info -->
+                <div class="col-lg-6">
+                    <h1 class="pd-title" id="pd-name">Royal Red Bridal Lehenga</h1>
+                    <div class="pd-price" id="pd-price">Rs 125,000</div>
+                    <p class="pd-desc" id="pd-desc"></p>
+
+                    <div class="pd-meta">
+                        <div class="pd-meta-item"><strong>Fabric:</strong> Pure Silk with Net Dupatta</div>
+                        <div class="pd-meta-item"><strong>Embroidery:</strong> Hand Embroidered Zardozi & Stone Work
+                        </div>
+                    </div>
+
+                    <div class="option-label">Select Size</div>
+                    <div class="pd-size-group">
+                        <div class="size-btn">S</div>
+                        <div class="size-btn active">M</div>
+                        <div class="size-btn">L</div>
+                        <div class="size-btn">XL</div>
+                    </div>
+
+                    <div class="option-label">Quantity</div>
+                    <div class="pd-qty-group">
+                        <button class="qty-btn" id="qty-minus">-</button>
+                        <div class="qty-val" id="qty-val">1</div>
+                        <button class="qty-btn" id="qty-plus">+</button>
+                    </div>
+
+                    <div class="pd-actions">
+                        <button class="btn btn-order-now" id="buy-now-btn">Order Now</button>
+                        <button class="btn btn-add-cart" id="add-to-cart-btn"><i class="bi bi-bag"></i> Add to
+                            Cart</button>
+                    </div>
+
+                    <div class="pd-guarantee">
+                        <i class="bi bi-shield-check"></i> 100% authentic & premium quality guaranteed
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container related-section">
+        <h2 class="related-title">Related Products</h2>
+        <div class="row g-4" id="related-products-grid">
+            <!-- Dynamic Related Products -->
+        </div>
+    </div>
+
+    <a href="https://wa.me/yournumber" class="whatsapp-btn">
+        <i class="bi bi-whatsapp fs-5"></i> WhatsApp
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <!-- Brand Column -->
+                <div class="col-lg-3">
+                    <div class="footer-brand">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <img src="assets/images/WhatsApp Image 2026-04-02 at 8.03.30 AM 1.png" alt="Logo" height="35">
+                            <div>
+                                <div class="footer-logo-title">New City Point</div>
+                                <div class="footer-logo-subtitle">GENUINE • PREMIUM • EXCLUSIVE</div>
+                            </div>
+                        </div>
+                        <p class="footer-desc">Your destination for authentic Pakistani bridal and formal wear, crafted
+                            with traditional excellence and modern elegance.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-lg-3 ps-lg-5">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="index.html" class="footer-link">Home</a></li>
+                            <li><a href="shop.html" class="footer-link">Shop</a></li>
+                            <li><a href="#" class="footer-link">Bridal Collection</a></li>
+                            <li><a href="about.html" class="footer-link">About Us</a></li>
+                            <li><a href="contact.html" class="footer-link">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Customer Service -->
+                <div class="col-lg-3">
+                    <div class="footer-column">
+                        <h4>Customer Service</h4>
+                        <ul class="footer-links">
+                            <li><a href="cart.html" class="footer-link">Shopping Cart</a></li>
+                            <li><a href="#" class="footer-link">Size Guide</a></li>
+                            <li><a href="#" class="footer-link">Shipping & Returns</a></li>
+                            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Contact Us -->
+                <div class="col-lg-3">
+                    <div class="footer-column">
+                        <h4>Contact Us</h4>
+                        <ul class="contact-info-list">
+                            <li class="contact-info-item">
+                                <i class="bi bi-geo-alt"></i>
+                                <span>45 A Keyzer St,<br>Colombo 01100</span>
+                            </li>
+                            <li class="contact-info-item">
+                                <i class="bi bi-telephone"></i>
+                                <span>+94************</span>
+                            </li>
+                            <li class="contact-info-item">
+                                <i class="bi bi-envelope"></i>
+                                <span>info@newcitypoint.com</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="copyright-section">
+                <p class="mb-0">© 2026 New City Point. All rights reserved. Crafted with tradition and elegance.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        $(document).ready(function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const pid = parseInt(urlParams.get('id')) || 1;
+            const product = products.find(p => p.id === pid) || products[0];
+
+            // Render current product
+            $('#pd-name').text(product.name);
+            $('#pd-price').text(`Rs ${product.price.toLocaleString()}`);
+            $('#pd-desc').text(product.desc || "Exquisite Pakistani wear featuring traditional craftsmanship, handcrafted with precision and elegance. This masterpiece represents the pinnacle of luxury, perfect for your special occasion.");
+            $('#main-image').attr('src', product.image);
+
+            // Render Related Products
+            const relatedGrid = $('#related-products-grid');
+            const related = products.filter(p => p.id !== pid).slice(0, 4);
+
+            related.forEach(p => {
+                relatedGrid.append(`
+                    <div class="col-md-3">
+                        <div class="shop-card" onclick="location.href='product-detail.html?id=${p.id}'">
+                            <div class="shop-card-img-wrapper" style="height: 380px; position: relative; overflow: hidden;">
+                                <img src="${p.image}" class="shop-card-img" alt="${p.name}" style="width:100%; height:100%; object-fit:cover;">
+                                <div class="shop-order-overlay" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--secondary-color); padding: 8px 20px; border-radius: 4px; opacity: 0; transition: .3s; font-weight: 600; font-size: 13px; white-space: nowrap;">Order Now</div>
+                            </div>
+                            <div class="shop-card-info" style="padding: 15px;">
+                                <h3 class="shop-card-title" style="font-size: 20px; margin-bottom: 5px;">${p.name}</h3>
+                                <p class="shop-card-desc" style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px; height: 40px; overflow: hidden;">${p.desc}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="shop-card-price" style="font-size: 20px; color: var(--secondary-color); font-weight: 600;">RS ${p.price.toLocaleString()}</div>
+                                    <div class="shop-card-category" style="font-size: 11px; color: #999; text-transform: uppercase;">${p.category}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+            });
+
+            // Thumbnails (Mocking multiple by using same image twice)
+            const thumbGrid = $('#thumb-grid');
+            [product.image, product.image].forEach((img, i) => {
+                thumbGrid.append(`<img src="${img}" class="thumb-img ${i === 0 ? 'active' : ''}">`);
+            });
+
+            // Handlers
+            let selectedSize = 'M';
+            $('.size-btn').click(function () {
+                $('.size-btn').removeClass('active');
+                $(this).addClass('active');
+                selectedSize = $(this).text();
+            });
+
+            let qty = 1;
+            $('#qty-plus').click(() => { qty++; $('#qty-val').text(qty); });
+            $('#qty-minus').click(() => { if (qty > 1) { qty--; $('#qty-val').text(qty); } });
+
+            $('#add-to-cart-btn').click(function () {
+                if (typeof addToCart === 'function') {
+                    addToCart(product.id, qty, selectedSize);
+                    alert('Added to cart!');
+                } else {
+                    console.error('addToCart function not found');
+                }
+            });
+
+            $('#buy-now-btn').click(function () {
+                if (typeof addToCart === 'function') {
+                    addToCart(product.id, qty, selectedSize);
+                    location.href = 'cart.html';
+                } else {
+                    location.href = 'cart.html';
+                }
+            });
+
+            $(document).on('click', '.thumb-img', function () {
+                $('.thumb-img').removeClass('active');
+                $(this).addClass('active');
+                $('#main-image').attr('src', $(this).attr('src'));
+            });
+
+            // Re-bind hover for dynamic cards
+            $(document).on('mouseenter', '.shop-card', function () {
+                $(this).find('.shop-order-overlay').css('opacity', '1');
+            }).on('mouseleave', '.shop-card', function () {
+                $(this).find('.shop-order-overlay').css('opacity', '0');
+            });
+        });
+    </script>
+</body>
+
+</html>

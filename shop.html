@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | New City Point</title>
+    <meta name="description"
+        content="Browse our exclusive collection of luxury Pakistani dresses, including bridal, formal, and party wear.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/images/WhatsApp Image 2026-04-02 at 8.03.30 AM 1.png">
+
+    <style>
+        body {
+            background-color: #fcfbf7;
+        }
+
+        .shop-container {
+            padding: 30px 0;
+        }
+
+        @media (min-width: 768px) {
+            .shop-container {
+                padding: 60px 0;
+            }
+        }
+
+        /* Sidebar Filters */
+        .filter-sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        @media (min-width: 992px) {
+            .filter-sidebar {
+                padding: 30px;
+                position: sticky;
+                top: 100px;
+            }
+        }
+
+        .filter-title {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .filter-group {
+            margin-bottom: 25px;
+        }
+
+        .filter-group-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            text-transform: capitalize;
+            letter-spacing: 0.02em;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .form-check {
+            margin-bottom: 8px;
+        }
+
+        .form-check-label {
+            font-size: 14px;
+        }
+
+        .size-btn-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .size-btn {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #ddd;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .size-btn:hover,
+        .size-btn.active {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        /* Product Grid */
+        .product-count {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .shop-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            margin-bottom: 0;
+            height: 100%;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shop-card:hover {
+            border-color: var(--secondary-color);
+            box-shadow: 0 10px 30px rgba(201, 162, 77, 0.15);
+        }
+
+        .shop-card-img-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+        }
+
+        .shop-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .shop-card:hover .shop-card-img {
+            transform: scale(1.05);
+        }
+
+        .shop-order-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(201, 162, 77, 0.9);
+            color: var(--primary-color);
+            padding: 10px 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            opacity: 0;
+            transition: var(--transition-smooth);
+            z-index: 2;
+            white-space: nowrap;
+            width: auto;
+            text-align: center;
+        }
+
+        @media (min-width: 576px) {
+            .shop-order-overlay {
+                font-size: 14px;
+                padding: 12px 15px;
+            }
+        }
+
+        .shop-card:hover .shop-order-overlay {
+            opacity: 1;
+        }
+
+        .shop-card-info {
+            padding: 15px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .shop-card-title {
+            font-family: var(--font-heading);
+            font-size: clamp(16px, 4vw, 20px);
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        .shop-card-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-weight: 300;
+        }
+
+        .shop-card-price {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+            margin-top: auto;
+        }
+
+        .shop-card-category {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="announcement-bar">
+        <div class="container announcement-content">
+            <span>✨</span>
+            <span>NEW COLLECTION 2026</span>
+            <span>✨</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2 gap-sm-3" href="index.html">
+                <img src="assets/images/WhatsApp Image 2026-04-02 at 8.03.30 AM 1.png" alt="Logo">
+                <div class="navbar-brand-content d-none d-sm-block">
+                    <div class="navbar-logo-title">New City Point</div>
+                    <div class="navbar-logo-subtitle">Private Limited</div>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-2 text-primary"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="shop.html">SHOP</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">ABOUT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <div class="d-flex align-items-center gap-3 nav-icons-group">
+                <a href="javascript:void(0)" id="search-trigger" class="text-primary transition-smooth">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="m21 21-4.3-4.3" />
+                    </svg>
+                </a>
+                <a href="cart.html" class="text-primary transition-smooth position-relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                        <path d="M3 6h18" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-gold"
+                        style="font-size: 10px; padding: 2px 5px; min-width: 18px;">0</span>
+                </a>
+                <a href="javascript:handleProfileClick()" class="text-primary transition-smooth">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+    <div class="container shop-container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3">
+                <div class="filter-sidebar">
+                    <h2 class="filter-title">Filters</h2>
+
+                    <div class="filter-group">
+                        <h4 class="filter-group-title">Category</h4>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="cat1" checked>
+                            <label class="form-check-label" for="cat1">All Dresses</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="cat2">
+                            <label class="form-check-label" for="cat2">Bridal Wear</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="cat3">
+                            <label class="form-check-label" for="cat3">Formal Wear</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="cat4">
+                            <label class="form-check-label" for="cat4">Party Wear</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-group-title">Price Range</h4>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="price" id="pr1" checked>
+                            <label class="form-check-label" for="pr1">All Prices</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="price" id="pr2">
+                            <label class="form-check-label" for="pr2">Under RS 50,000</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="price" id="pr3">
+                            <label class="form-check-label" for="pr3">RS 50,000 - 100,000</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="price" id="pr4">
+                            <label class="form-check-label" for="pr4">Above RS 100,000</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-group-title">Size</h4>
+                        <div class="size-btn-group">
+                            <div class="size-btn">S</div>
+                            <div class="size-btn">M</div>
+                            <div class="size-btn">L</div>
+                            <div class="size-btn">XL</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products -->
+            <div class="col-lg-9">
+                <div class="product-count">Showing <span id="displayed-count">12</span> products</div>
+                <div class="row g-4" id="product-grid">
+                    <!-- Products will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <!-- Brand Column -->
+                <div class="col-lg-3">
+                    <div class="footer-brand">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <img src="assets/images/WhatsApp Image 2026-04-02 at 8.03.30 AM 1.png" alt="Logo" height="35">
+                            <div>
+                                <div class="footer-logo-title">New City Point</div>
+                                <div class="footer-logo-subtitle">Private Limited</div>
+                            </div>
+                        </div>
+                        <p class="footer-desc">Your destination for authentic Pakistani bridal and formal wear, crafted
+                            with traditional excellence and modern elegance.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-lg-3 ps-lg-5">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="index.html" class="footer-link">Home</a></li>
+                            <li><a href="shop.html" class="footer-link">Shop</a></li>
+                            <li><a href="#" class="footer-link">Bridal Collection</a></li>
+                            <li><a href="about.html" class="footer-link">About Us</a></li>
+                            <li><a href="contact.html" class="footer-link">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Customer Service -->
+                <div class="col-lg-3">
+                    <div class="footer-column">
+                        <h4>Customer Service</h4>
+                        <ul class="footer-links">
+                            <li><a href="cart.html" class="footer-link">Shopping Cart</a></li>
+                            <li><a href="#" class="footer-link">Size Guide</a></li>
+                            <li><a href="#" class="footer-link">Shipping & Returns</a></li>
+                            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Contact Us -->
+                <div class="col-lg-3">
+                    <div class="footer-column">
+                        <h4>Contact Us</h4>
+                        <ul class="contact-info-list">
+                            <li class="contact-info-item">
+                                <i class="bi bi-geo-alt"></i>
+                                <span>45 A Keyzer St,<br>Colombo 01100</span>
+                            </li>
+                            <li class="contact-info-item">
+                                <i class="bi bi-telephone"></i>
+                                <span>077 700 2335</span>
+                            </li>
+                            <li class="contact-info-item">
+                                <i class="bi bi-envelope"></i>
+                                <span>info@newcitypoint.com</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="copyright-section">
+                <p class="mb-0">© 2026 New City Point. All rights reserved. Crafted with tradition and elegance.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        function renderProducts(searchQuery = '') {
+            const grid = $('#product-grid');
+            grid.empty();
+
+            let displayedProducts = products;
+
+            if (searchQuery) {
+                const q = searchQuery.toLowerCase();
+                displayedProducts = products.filter(p =>
+                    p.name.toLowerCase().includes(q) ||
+                    p.category.toLowerCase().includes(q) ||
+                    p.desc.toLowerCase().includes(q)
+                );
+                // Clear any existing search notices first
+                $('.search-notice').remove();
+                grid.before(`<div class="col-12 mb-4 search-notice"><h3 style="font-family: var(--font-heading);">Showing results for "${searchQuery}"</h3><a href="shop.html" class="text-secondary small">Clear search</a></div>`);
+            }
+
+            displayedProducts.forEach((product) => {
+                const card = `
+                    <div class="col-md-4">
+                        <div class="shop-card" onclick="location.href='product-detail.html?id=${product.id}'">
+                            <div class="shop-card-img-wrapper">
+                                <img src="${product.image}" class="shop-card-img" alt="${product.name}">
+                                <div class="shop-order-overlay" onclick="event.stopPropagation(); location.href='product-detail.html?id=${product.id}'">Order Now</div>
+                            </div>
+                            <div class="shop-card-info">
+                                <h3 class="shop-card-title">${product.name}</h3>
+                                <p class="shop-card-desc">${product.desc}</p>
+                                <div class="shop-card-price">Rs ${product.price.toLocaleString()}</div>
+                                <div class="shop-card-category">${product.category}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.append(card);
+            });
+            $('#displayed-count').text($('.shop-card').length);
+        }
+
+        $(document).ready(function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const search = urlParams.get('search');
+            renderProducts(search);
+
+            $('.size-btn').click(function () {
+                $('.size-btn').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

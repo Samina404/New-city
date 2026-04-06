@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | New City Point</title>
+    <meta name="description"
+        content="Learn about the heritage and craftsmanship behind New City Point, celebrating traditional Pakistani fashion.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="icon" type="image/svg+xml" href="assets/images/WhatsApp Image 2026-04-02 at 8.03.30 AM 1.png">
+
+    <style>
+        .about-hero {
+            height: 390px;
+            background: url('assets/images/about-bg\ copy.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        .about-hero .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 28, 45, 0.75);
+        }
+
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-hero-icon {
+            margin-bottom: 30px;
+        }
+
+        .about-hero-icon i {
+            font-size: 60px;
+            color: var(--secondary-color);
+        }
+
+        .about-hero-title {
+            font-size: 64px;
+            font-family: var(--font-heading);
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 0.02em;
+        }
+
+        .about-hero-subtitle {
+            font-size: 20px;
+            letter-spacing: 0.1em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .our-story-section {
+            padding: 60px 0;
+            text-align: center;
+            background-color: var(--white);
+        }
+
+        .about-section-title {
+            font-size: 48px;
+            font-family: var(--font-heading);
+            margin-bottom: 45px;
+            color: var(--primary-color);
+        }
+
+        .story-text {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .story-text p {
+            font-size: 17px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .values-section {
+            padding: 50px;
+            background-color: #fcfbf7;
+            text-align: center;
+        }
+
+        .values-subtitle {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            letter-spacing: 0.05em;
+            font-weight: 300;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 60px 40px;
+            height: 100%;
+            border-radius: 4px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-icon {
+            font-size: 48px;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+        }
+
+        .value-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-family: var(--font-heading);
+        }
+
+        .value-card p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .embroidery-section {
+            padding: 60px 0;
+            text-align: center;
+            background-color: var(--white);
+        }
+
+        @media (max-width: 991px) {
+            .about-hero-title {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero-title {
+                font-size: 38px;
+            }
+
+            .about-section-title {
+                font-size: 36px;
+            }
+
+            .value-card {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="announcement-bar">
+        <div class="container announcement-content">
+            <span>✨</span>
+            <span>NEW COLLECTION 2026</span>
+            <span>✨</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-3" href="index.html">
+                <img src="assets/images/WhatsApp Image 2026-04-02 at 8.03.30 AM 1.png" alt="Logo">
+                <div class="d-none d-sm-block">
+                    <div
+                        style="font-family: var(--font-heading); font-size: 24px; line-height: 1; letter-spacing: 0.05em; color: var(--primary-color); font-weight: 500;">
+                        New City Point</div>
+                    <div
+                        style="font-family: var(--font-body); font-size: 12px; opacity: 1; letter-spacing: 0.1em; font-weight: 400; color: var(--secondary-color); margin-top: 4px;">
+                        Private Limited</div>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-2 text-primary"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">SHOP</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about.html">ABOUT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <div class="d-flex align-items-center gap-3 nav-icons-group">
+                <a href="javascript:void(0)" id="search-trigger" class="text-primary transition-smooth">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="m21 21-4.3-4.3" />
+                    </svg>
+                </a>
+                <a href="cart.html" class="text-primary transition-smooth position-relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                        <path d="M3 6h18" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-gold"
+                        style="font-size: 10px; padding: 2px 5px; min-width: 18px;">0</span>
+                </a>
+                <a href="javascript:handleProfileClick()" class="text-primary transition-smooth">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="hero-overlay"></div>
+        <div class="container about-hero-content">
+            <div class="about-hero-icon" data-aos="zoom-in">
+                <img src="assets/images/WhatsApp Image 2026-04-02 at 8.03.30 AM 1.png" alt="Logo" width="60" style="margin-bottom: 20px;">
+            </div>
+            <h1 class="about-hero-title" data-aos="fade-up" data-aos-delay="200">About New City Point</h1>
+            <p class="about-hero-subtitle" data-aos="fade-up" data-aos-delay="400">Celebrating Pakistani Heritage &
+                Craftsmanship</p>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="our-story-section">
+        <div class="container">
+            <h2 class="about-section-title" data-aos="fade-up">Our Story</h2>
+            <div class="story-text">
+                <p data-aos="fade-up" data-aos-delay="100">New City Point was born from a deep passion for
+                    preserving and celebrating the rich heritage of Pakistani fashion. For generations, our artisans
+                    have perfected the art of traditional embroidery, creating pieces that blend timeless elegance with
+                    contemporary design.</p>
+                <p data-aos="fade-up" data-aos-delay="200">Each dress in our collection tells a story of dedication,
+                    where master craftsmen pour their heart and soul into every stitch, every embellishment, and every
+                    intricate detail. From the vibrant bridal lehengas to the graceful formal anarkalis, our creations
+                    embody the spirit of Pakistani culture.</p>
+                <p data-aos="fade-up" data-aos-delay="300">We believe that fashion is more than just clothing — it's a
+                    celebration of identity, tradition, and artistry. Every piece we create is a testament to the
+                    skilled hands that crafted it and the rich cultural tapestry of Pakistan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="about-section-title" data-aos="fade-up">Our Values</h2>
+            <p class="values-subtitle" data-aos="fade-up" data-aos-delay="100">What sets us apart</p>
+            <div class="row g-4">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="value-card">
+                        <div class="value-icon"><img src="assets/images/WhatsApp Image 2026-04-02 at 8.03.30 AM 1.png" alt="" width="40"></div>
+                        <h3>Authentic Craftsmanship</h3>
+                        <p>Every piece is handcrafted by master artisans using traditional techniques passed down
+                            through generations.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="value-card">
+                        <div class="value-icon"><i class="bi bi-stars"></i></div>
+                        <h3>Premium Quality</h3>
+                        <p>We use only the finest fabrics and materials to ensure lasting beauty and comfort in every
+                            garment.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="value-card">
+                        <div class="value-icon"><i class="bi bi-award"></i></div>
+                        <h3>Excellence in Design</h3>
+                        <p>Our designs blend traditional Pakistani aesthetics with modern sensibilities for timeless
+                            elegance.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="500">
+                    <div class="value-card">
+                        <div class="value-icon"><i class="bi bi-heart"></i></div>
+                        <h3>Customer Dedication</h3>
+                        <p>Your satisfaction is our priority. We're committed to making your special moments truly
+                            memorable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Art of Embroidery Section -->
+    <section class="embroidery-section">
+        <div class="container">
+            <h2 class="about-section-title" data-aos="fade-up">The Art of Hand Embroidery</h2>
+            <div class="story-text">
+                <p data-aos="fade-up" data-aos-delay="100">Our signature hand embroidery techniques — including zardozi,
+                    gota patti, dabka work, and thread embroidery — are what make each piece truly special. These
+                    intricate art forms require years of training and incredible patience.</p>
+                <p data-aos="fade-up" data-aos-delay="200">Each bridal ensemble can take weeks or even months to
+                    complete, with artisans carefully placing every sequin, bead, and thread to create breathtaking
+                    patterns that shimmer and shine. This dedication to detail is what transforms fabric into wearable
+                    art.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <!-- Brand Column -->
+                <div class="col-lg-3">
+                    <div class="footer-brand">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <img src="assets/images/WhatsApp Image 2026-04-02 at 8.03.30 AM 1.png" alt="Logo" height="35">
+                            <div>
+                                <div class="footer-logo-title">New City Point</div>
+                                <div class="footer-logo-subtitle">Private Limited</div>
+                            </div>
+                        </div>
+                        <p class="footer-desc">Your destination for authentic bridal and formal wear, crafted
+                            with traditional excellence and modern elegance.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-lg-3 ps-lg-5">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="index.html" class="footer-link">Home</a></li>
+                            <li><a href="shop.html" class="footer-link">Shop</a></li>
+                            <li><a href="#" class="footer-link">Bridal Collection</a></li>
+                            <li><a href="about.html" class="footer-link">About Us</a></li>
+                            <li><a href="contact.html" class="footer-link">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Customer Service -->
+                <div class="col-lg-3">
+                    <div class="footer-column">
+                        <h4>Customer Service</h4>
+                        <ul class="footer-links">
+                            <li><a href="cart.html" class="footer-link">Shopping Cart</a></li>
+                            <li><a href="#" class="footer-link">Size Guide</a></li>
+                            <li><a href="#" class="footer-link">Shipping & Returns</a></li>
+                            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Contact Us -->
+                <div class="col-lg-3">
+                    <div class="footer-column">
+                        <h4>Contact Us</h4>
+                        <ul class="contact-info-list">
+                            <li class="contact-info-item">
+                                <i class="bi bi-geo-alt"></i>
+                                <span>45 A Keyzer St,<br>Colombo 01100</span>
+                            </li>
+                            <li class="contact-info-item">
+                                <i class="bi bi-telephone"></i>
+                                <span>077 700 2335</span>
+                            </li>
+                            <li class="contact-info-item">
+                                <i class="bi bi-envelope"></i>
+                                <span>info@newcitypoint.com</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="copyright-section">
+                <p class="mb-0">© 2026 New City Point. All rights reserved. Crafted with excellence.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Initialize AOS
+            AOS.init({
+                duration: 1000,
+                once: true,
+                offset: 100
+            });
+
+            // Navbar Scroll Effect
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').css('box-shadow', '0 5px 15px rgba(0,0,0,0.1)');
+                } else {
+                    $('.navbar').css('box-shadow', 'none');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

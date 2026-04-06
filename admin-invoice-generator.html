@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Invoice Generator | New City Point</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f7f6;
+            font-family: 'Poppins', sans-serif;
+            padding: 50px 0;
+        }
+
+        .admin-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .admin-header {
+            border-bottom: 2px solid #f0f0f0;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+        }
+
+        .admin-header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #0b1c2d;
+        }
+
+        label {
+            font-weight: 500;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            border: 1px solid #e0e0e0;
+            padding: 12px;
+            font-size: 14px;
+            border-radius: 6px;
+        }
+
+        .form-control:focus {
+            border-color: #cba35c;
+            box-shadow: 0 0 0 0.2rem rgba(203, 163, 92, 0.1);
+        }
+
+        .btn-generate {
+            background: #0b1c2d;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .btn-generate:hover {
+            background: #1a3a5a;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #cba35c;
+            margin: 25px 0 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="admin-card">
+            <div class="admin-header">
+                <h1>New City Point - ADMIN PANEL</h1>
+                <p class="text-muted">Generate professional invoices for customers</p>
+            </div>
+
+            <form id="invoiceForm">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label>Order Number</label>
+                            <input type="text" class="form-control" id="orderId" value="ORD123456789">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label>Order Date</label>
+                            <input type="text" class="form-control" id="orderDate" value="23/02/2026">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label>Order Time</label>
+                            <input type="text" class="form-control" id="orderTime" value="02:30 PM">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title">Customer Details</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label>Customer Name</label>
+                            <input type="text" class="form-control" id="customerName" value="Irtika">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label>Address / Contact</label>
+                            <input type="text" class="form-control" id="customerAddress" value="Colombo, Srilanka">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title">Product Information</div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="mb-3">
+                            <label>Product Name</label>
+                            <input type="text" class="form-control" id="productName" value="Bridal Lehenga">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label>Size</label>
+                            <input type="text" class="form-control" id="productSize" value="Small">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label>Product Description</label>
+                            <textarea class="form-control" id="productDescription"
+                                rows="3">Exquisite red bridal lehenga featuring traditional zardozi embroidery, handcrafted with gold and silver threads.</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title">Pricing (In LKR/PKR)</div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label>Price Per Unit</label>
+                            <input type="number" class="form-control" id="pricePerUnit" value="15000">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label>Quantity</label>
+                            <input type="number" class="form-control" id="productQuantity" value="2">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label>Total Amount</label>
+                            <input type="number" class="form-control" id="totalAmount" value="30000">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-generate" onclick="generateInvoice()">GENUINE INVOICE & VIEW</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function generateInvoice() {
+            // Collect form data
+            const orderData = {
+                id: document.getElementById('orderId').value,
+                date: document.getElementById('orderDate').value,
+                time: document.getElementById('orderTime').value,
+                customer: {
+                    fullName: document.getElementById('customerName').value,
+                    address: document.getElementById('customerAddress').value
+                },
+                items: [
+                    {
+                        name: document.getElementById('productName').value,
+                        size: document.getElementById('productSize').value,
+                        quantity: parseInt(document.getElementById('productQuantity').value),
+                        description: document.getElementById('productDescription').value,
+                        price: parseFloat(document.getElementById('pricePerUnit').value)
+                    }
+                ],
+                total: parseFloat(document.getElementById('totalAmount').value)
+            };
+
+            // Store in temp_invoice_data for the invoice page to pick up
+            localStorage.setItem('temp_invoice_data', JSON.stringify(orderData));
+
+            // Small delay to ensure storage, then open invoice
+            setTimeout(() => {
+                window.open('invoice.html', '_blank');
+            }, 100);
+        }
+
+        // Auto-calculate total amount
+        const priceInput = document.getElementById('pricePerUnit');
+        const qtyInput = document.getElementById('productQuantity');
+        const totalInput = document.getElementById('totalAmount');
+
+        [priceInput, qtyInput].forEach(input => {
+            input.addEventListener('input', () => {
+                totalInput.value = (priceInput.value || 0) * (qtyInput.value || 0);
+            });
+        });
+    </script>
+</body>
+
+</html>
